@@ -1,0 +1,174 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+import 'aos/dist/aos.css';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content="Ps. Viviana Poveda - Psicóloga especializada en terapia individual, parejas y desarrollo personal. Ayudando a las personas a encontrar su camino hacia el bienestar emocional." />
+    
+    <!-- Precargar recursos críticos -->
+    <link rel="preload" href="/videos/hero.mp4" as="video" type="video/mp4" />
+    
+    <!-- Preconectar con orígenes externos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Cargar fuentes con display swap -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    
+    <!-- Fallback para la carga de fuentes -->
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    </noscript>
+
+    <style>
+      /* Estilos para scroll snap */
+      html {
+        scroll-behavior: smooth;
+      }
+      
+      body {
+        @apply min-h-screen bg-neutral-50;
+        scroll-snap-type: y proximity;
+        overflow-y: scroll;
+        overflow-x: hidden;
+      }
+
+      /* Ajuste para las secciones */
+      section {
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+        padding-top: calc(4rem + var(--header-height, 0px));
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+      }
+
+      /* Excepción para la primera sección (Hero) */
+      section:first-of-type {
+        padding-top: 0;
+        margin-top: var(--header-height, 0px);
+      }
+
+      /* Personalización de la barra de scroll */
+      body::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      body::-webkit-scrollbar-track {
+        @apply bg-gray-100;
+      }
+
+      body::-webkit-scrollbar-thumb {
+        @apply bg-pink-300 rounded-full;
+      }
+
+      body::-webkit-scrollbar-thumb:hover {
+        @apply bg-pink-400;
+      }
+
+      /* Ajuste para Firefox */
+      * {
+        scrollbar-width: thin;
+        scrollbar-color: theme('colors.pink.300') theme('colors.gray.100');
+      }
+
+      /* Clase de utilidad para desactivar scroll snap en móviles */
+      @media (max-width: 768px) {
+        body {
+          scroll-snap-type: none;
+        }
+        section {
+          padding-top: 4rem;
+          min-height: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+
+    <script>
+      import AOS from 'aos';
+
+      // Inicializar AOS
+      document.addEventListener('DOMContentLoaded', () => {
+        AOS.init({
+          duration: 1000,
+          once: true,
+          offset: 100,
+          easing: 'ease-in-out'
+        });
+      });
+
+      // Script para manejar el scroll suave y evitar problemas con el header fijo
+      document.addEventListener('DOMContentLoaded', () => {
+        const header = document.querySelector('header');
+        const headerHeight = header?.offsetHeight || 0;
+        
+        // Establecer la altura del header como variable CSS
+        document.documentElement.style.setProperty('--header-height', `${headerHeight}px`);
+
+        // Ajustar el scroll para compensar el header fijo
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function(this: HTMLAnchorElement, e: Event) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId || '');
+            
+            if (targetElement) {
+              const elementPosition = targetElement.getBoundingClientRect().top;
+              const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+
+              window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+              });
+            }
+          });
+        });
+
+        // Detectar dirección del scroll para mostrar/ocultar el header
+        let lastScroll = 0;
+        
+        window.addEventListener('scroll', () => {
+          const currentScroll = window.pageYOffset;
+          
+          if (currentScroll <= 0) {
+            header?.classList.remove('-translate-y-full');
+            return;
+          }
+          
+          if (currentScroll > lastScroll && currentScroll > headerHeight) {
+            // Scrolling down
+            header?.classList.add('-translate-y-full');
+          } else {
+            // Scrolling up
+            header?.classList.remove('-translate-y-full');
+          }
+          
+          lastScroll = currentScroll;
+        });
+      });
+    </script>
+  </body>
+</html> 
