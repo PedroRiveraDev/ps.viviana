@@ -12,7 +12,7 @@ const { title } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es" class="scroll-smooth overflow-x-hidden">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -102,7 +102,7 @@ const { title } = Astro.props;
   </head>
   <body>
     <Header />
-    <main>
+    <main class="overflow-x-hidden">
       <slot />
     </main>
     <Footer />
@@ -116,7 +116,10 @@ const { title } = Astro.props;
           duration: 1000,
           once: true,
           offset: 100,
-          easing: 'ease-in-out'
+          easing: 'ease-in-out',
+          disable: 'mobile',
+          disableMutationObserver: false,
+          mirror: false
         });
       });
 
