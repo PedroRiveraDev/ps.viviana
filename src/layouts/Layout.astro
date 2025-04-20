@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
 import '../styles/global.css';
 import 'aos/dist/aos.css';
 
@@ -106,6 +107,7 @@ const { title } = Astro.props;
       <slot />
     </main>
     <Footer />
+    <WhatsAppButton phoneNumber="56985293928" />
 
     <script>
       import AOS from 'aos';
