@@ -1,75 +1,103 @@
-# Sitio Web de Psicología - Viviana Poveda
+# Psicóloga Web
 
-Sitio web profesional para servicios de psicología clínica, desarrollado con Astro y Tailwind CSS.
+Sitio web profesional para servicios de psicología, construido con Astro y TailwindCSS.
 
 ## 🚀 Características
 
-- Diseño moderno y responsivo
-- Animaciones suaves y profesionales
-- Optimizado para SEO
-- Rendimiento optimizado
-- Formulario de contacto integrado
-- Secciones informativas sobre servicios psicológicos
+- 🎨 Diseño moderno y responsive
+- ⚡ Rendimiento optimizado con Astro
+- 🎯 SEO optimizado
+- 📱 Totalmente responsive
+- 🌙 Modo oscuro
+- ♿ Accesibilidad
+- 🔍 Sitemap y robots.txt
+- 📝 Formularios de contacto
+- 💬 Integración con WhatsApp
 
-## 🛠️ Tecnologías Utilizadas
+## 🛠️ Tecnologías
 
-- [Astro](https://astro.build/) - Framework web moderno
-- [Tailwind CSS](https://tailwindcss.com/) - Framework CSS utilitario
-- [AOS](https://michalsnik.github.io/aos/) - Animate On Scroll Library
+- [Astro](https://astro.build)
+- [TailwindCSS](https://tailwindcss.com)
+- [TypeScript](https://www.typescriptlang.org)
+- [AOS](https://michalsnik.github.io/aos/) (Animate On Scroll)
 
 ## 📦 Instalación
 
 1. Clona el repositorio:
-```bash
-git clone [URL_DEL_REPOSITORIO]
-```
+   ```bash
+   git clone https://github.com/tu-usuario/psicologa-web.git
+   cd psicologa-web
+   ```
 
 2. Instala las dependencias:
-```bash
-pnpm install
+   ```bash
+   npm install
+   ```
+
+3. Crea un archivo `.env` basado en las siguientes variables:
+   ```env
+   # Configuración del sitio
+   SITE_URL=https://tudominio.com
+   SITE_NAME=Psicóloga Web
+   SITE_DESCRIPTION=Servicios profesionales de psicología online
+
+   # Información de contacto
+   CONTACT_EMAIL=contacto@tudominio.com
+   CONTACT_PHONE=+34600000000
+
+   # Redes sociales
+   INSTAGRAM_URL=https://instagram.com/tu-usuario
+   LINKEDIN_URL=https://linkedin.com/in/tu-usuario
+
+   # Configuración de formulario
+   FORMSPREE_ID=tu-id-de-formspree
+   ```
+
+4. Inicia el servidor de desarrollo:
+   ```bash
+   npm run dev
+   ```
+
+## 🏗️ Scripts Disponibles
+
+- `npm run dev` - Inicia el servidor de desarrollo
+- `npm run build` - Construye el sitio para producción
+- `npm run preview` - Vista previa de la build
+- `npm run lint` - Ejecuta ESLint
+- `npm run lint:fix` - Corrige errores de ESLint
+- `npm run format` - Formatea el código con Prettier
+- `npm run format:check` - Verifica el formato del código
+- `npm run typecheck` - Verifica los tipos de TypeScript
+
+## 📁 Estructura del Proyecto
+
+```
+src/
+├── components/
+│   ├── layout/     # Componentes de layout (Header, Footer)
+│   ├── sections/   # Secciones de la página
+│   └── ui/         # Componentes UI reutilizables
+├── layouts/        # Layouts de Astro
+├── pages/          # Páginas de la aplicación
+├── styles/         # Estilos globales
+├── types/          # Tipos de TypeScript
+└── utils/          # Utilidades y constantes
 ```
 
-3. Inicia el servidor de desarrollo:
-```bash
-pnpm dev
-```
+## 🎨 Personalización
 
-El sitio estará disponible en `http://localhost:4321`
+1. Configura las variables de entorno en el archivo `.env`
+2. Modifica las constantes en `src/utils/constants.ts`
+3. Actualiza los colores en `tailwind.config.mjs`
+4. Personaliza el contenido en los componentes de sección
 
-## 🔧 Scripts Disponibles
+## 📝 Licencia
 
-| Comando | Descripción |
-|---------|-------------|
-| `pnpm install` | Instala las dependencias |
-| `pnpm dev` | Inicia el servidor de desarrollo |
-| `pnpm build` | Construye el sitio para producción |
-| `pnpm preview` | Previsualiza la versión de producción |
+MIT
 
-## 🌐 Estructura del Proyecto
+## 👥 Contribución
 
-```text
-/
-├── public/          # Archivos estáticos
-│   ├── images/      # Imágenes
-│   └── videos/      # Videos
-├── src/
-│   ├── components/  # Componentes reutilizables
-│   ├── layouts/     # Layouts de la aplicación
-│   └── pages/       # Páginas del sitio
-└── package.json
-```
-
-## 🚀 Despliegue
-
-El sitio está configurado para ser desplegado en cualquier plataforma que soporte aplicaciones estáticas (Netlify, Vercel, etc.).
-
-## 📄 Licencia
-
-Este proyecto es privado y todos los derechos están reservados.
-
-## 👤 Autor
-
-Desarrollado para Ps. Viviana Poveda
+Las contribuciones son bienvenidas. Por favor, abre un issue primero para discutir los cambios que te gustaría hacer.
 
 ```sh
 pnpm create astro@latest -- --template minimal

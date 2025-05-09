@@ -1,23 +1,17 @@
 ---
-interface Props {
-  phoneNumber: string;
-  message?: string;
-}
-
-const { phoneNumber, message = "¡Hola! Me gustaría agendar una consulta." } = Astro.props;
-const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+import { SITE_CONFIG } from '@/utils/constants';
 ---
 
 <a
-  href={whatsappUrl}
+  href="https://wa.me/+56985293928?text=Hola,%20me%20gustaría%20agendar%20una%20sesión%20de%20Atención%20Psicológica"
   target="_blank"
   rel="noopener noreferrer"
-  class="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-primary-600 text-white shadow-lg transition-all hover:bg-primary-700 hover:scale-110"
+  class="fixed bottom-6 right-6 z-50 bg-primary-400 text-white p-4 rounded-full shadow-lg hover:bg-primary-500 transition-colors duration-200"
   aria-label="Contactar por WhatsApp"
 >
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    class="h-7 w-7"
+    class="h-8 w-8"
     fill="currentColor"
     viewBox="0 0 24 24"
   >

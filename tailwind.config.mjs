@@ -72,8 +72,9 @@ export default {
       },
       fontFamily: {
         sans: ['Inter var', 'system-ui', 'sans-serif'],
-        serif: ['Playfair Display', 'Georgia', 'serif'],
-        cormorant: ['Cormorant Garamond', 'Georgia', 'serif'],
+        heading: ['Poppins', 'system-ui', 'sans-serif'],
+        serif: ['Cormorant Garamond', 'serif'],
+        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
       },
       fontSize: {
         'xs': ['0.75rem', { lineHeight: '1rem' }],
@@ -89,6 +90,12 @@ export default {
         '7xl': ['4.5rem', { lineHeight: '1' }],
         '8xl': ['6rem', { lineHeight: '1' }],
         '9xl': ['8rem', { lineHeight: '1' }],
+      },
+      fontWeight: {
+        'normal': '400',
+        'medium': '500',
+        'semibold': '600',
+        'bold': '700',
       },
       spacing: {
         '18': '4.5rem',

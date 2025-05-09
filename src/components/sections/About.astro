@@ -1,0 +1,88 @@
+{/* Componente About con diseño moderno y numeración */}
+<section 
+  id="sobre-mi" 
+  class="min-h-screen flex items-center justify-center py-16 lg:py-0 bg-white"
+  data-aos="fade-right"
+  data-aos-duration="600"
+>
+  <div class="container mx-auto px-4 lg:px-8 max-w-7xl">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      {/* Columna izquierda con imagen */}
+      <div class="relative order-2 lg:order-1">
+        <div class="relative rounded-[2rem] overflow-hidden shadow-xl aspect-[3/4] max-w-xl mx-auto">
+          <img
+            src="/images/psicologa.png"
+            alt="Psicóloga Viviana Poveda"
+            class="w-full h-full object-cover"
+          />
+          {/* Overlay con información */}
+          <div class="absolute bottom-0 left-0 right-0 p-6">
+            <div class="bg-pink-100/95 backdrop-blur-sm rounded-[1.5rem] p-6 shadow-lg">
+              <p class="text-gray-900 text-base leading-relaxed font-medium">
+                Busco que cada persona se sienta <span class="font-bold text-primary-700">escuchada, acompañada y comprendida</span>, en un espacio donde pueda <span class="font-bold text-primary-700">expresarse libremente</span>, sin juicios ni presiones.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Columna derecha con contenido */}
+      <div class="order-1 lg:order-2">
+        <p class="text-pink-500 font-bold mb-2 tracking-wide">¿Quién Soy?</p>
+        <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          Viviana Poveda
+        </h2>
+
+        <br>
+
+        {/* Sección 1 */}
+        <div class="mb-8">
+          <div class="flex items-start gap-4">
+            <span class="text-3xl font-serif font-bold text-pink-500">01</span>
+            <div>
+              <p class="text-xl font-bold text-gray-900 mb-2">
+                Formación Profesional
+              </p>
+              <p class="text-gray-800 leading-relaxed text-base md:text-lg font-normal">
+                Psicóloga clínica titulada en la <span class="font-bold">Universidad Gabriela Mistral</span>, con sólida formación académica y enfoque en el <span class="font-bold">bienestar emocional</span> de las personas.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Sección 2 */}
+        <div class="mb-8">
+          <div class="flex items-start gap-4">
+            <span class="text-3xl font-serif font-bold text-pink-500">02</span>
+            <div>
+              <p class="text-xl font-bold text-gray-900 mb-2">
+                Experiencia Clínica
+              </p> 
+              <p class="text-gray-800 leading-relaxed mb-2 text-base md:text-lg font-normal">
+                He trabajado con <span class="font-bold">casos de trastornos de ansiedad</span>, brindando herramientas para <span class="font-bold">gestionar el malestar emocional</span>, los <span class="font-bold">pensamientos intrusivos</span> y las <span class="font-bold">respuestas físicas asociadas al estrés</span>.
+              </p>
+              <p class="text-gray-800 leading-relaxed text-base md:text-lg font-normal">
+                También he acompañado <span class="font-bold">procesos de duelo</span>, respetando el <span class="font-bold">ritmo</span> y la <span class="font-bold">singularidad de cada persona</span>, ayudando a <span class="font-bold">transitar la pérdida</span> con <span class="font-bold">contención y comprensión</span>.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Sección 3 */}
+        <div>
+          <div class="flex items-start gap-4">
+            <span class="text-3xl font-serif font-bold text-pink-500">03</span>
+            <div>
+              <p class="text-xl font-bold text-gray-900 mb-2">
+                Compromiso Terapéutico
+              </p>
+              <p class="text-gray-800 leading-relaxed text-base md:text-lg font-normal">
+                Mi compromiso terapéutico se sostiene en valores esenciales como la <span class="font-bold">confidencialidad</span>, el <span class="font-bold">respeto</span> y la <span class="font-bold">ética profesional</span>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

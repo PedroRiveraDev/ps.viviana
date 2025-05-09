@@ -1,15 +1,19 @@
 <section id="inicio" class="relative min-h-screen w-full overflow-hidden bg-pink-100">
-  <!-- Imagen de fondo (lado izquierdo) -->
+  <!-- Video de fondo (lado izquierdo) -->
   <div class="absolute inset-0 w-1/2 hidden lg:block">
-    <img 
-      src="/images/hero.jpg" 
-      alt="Imagen de consulta psicológica" 
+    <video
       class="object-cover w-full h-full"
-    />
+      autoplay
+      loop
+      muted
+      playsinline
+    >
+      <source src="/videos/hero.mp4" type="video/mp4" />
+    </video>
     <div class="absolute inset-0 bg-gradient-to-r from-black/30 to-black/10"></div>
   </div>
 
-  <!-- Área de contenido derecha (fondo rosado unificado) -->
+  <!-- Área de contenido derecha -->
   <div class="absolute top-0 right-0 w-full lg:w-[55%] h-full bg-pink-100">
     <div class="relative h-full flex items-center justify-center lg:justify-start px-4 lg:pl-16 lg:pr-24">
       <div class="w-full max-w-lg">
@@ -20,18 +24,18 @@
           </span>
         </div>
 
-        <h1 class="font-serif text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-primary-900">
-          Viviana<br />Poveda
+        <h1 class="text-6xl md:text-7xl tracking-tight mb-6 leading-tight text-primary-900 font-semibold">
+          Viviana Poveda
         </h1>
         
-        <p class="font-sans text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
+        <p class="text-base md:text-lg text-gray-600 mb-8 leading-relaxed font-normal">
           Psicóloga clínica especializada en acompañamiento emocional desde un enfoque integrativo
         </p>
         
         <div class="flex flex-col sm:flex-row gap-4">
           <a 
             href="#contacto"
-            class="inline-flex items-center px-8 py-4 bg-primary-600 text-white font-medium rounded-full hover:bg-primary-700 transition-colors duration-300"
+            class="inline-flex items-center px-6 py-4 bg-primary-600 text-white font-semibold rounded-full hover:bg-primary-700 transition-colors duration-300 whitespace-nowrap"
           >
             Agenda tu consulta
             <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -40,9 +44,9 @@
           </a>
           <a 
             href="#servicios"
-            class="inline-flex items-center px-8 py-4 border-2 border-primary-600 text-primary-700 font-medium rounded-full hover:bg-primary-50 transition-colors duration-300"
+            class="inline-flex items-center px-6 py-4 border-2 border-primary-600 text-primary-700 font-semibold rounded-full hover:bg-primary-50 transition-colors duration-300 whitespace-nowrap"
           >
-            Conoce mis servicios
+          ¿Cómo puedo ayudarte?
           </a>
         </div>
       </div>
@@ -85,4 +89,4 @@
       animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
     }
   }
-</style>
+</style> 
