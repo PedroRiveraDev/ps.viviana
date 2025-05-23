@@ -1,0 +1,29 @@
+# https://psvivianapoveda.cl/robots.txt
+# Permitir a todos los robots de búsqueda
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://psvivianapoveda.cl/sitemap-index.xml
+
+# Reglas específicas para bots conocidos
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Googlebot-Image
+Allow: /
+Crawl-delay: 1
+
+User-agent: bingbot
+Allow: /
+Crawl-delay: 1
+
+# Bloquear directorios privados o administrativos
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /api/
+
+# Host
+Host: https://psvivianapoveda.cl 

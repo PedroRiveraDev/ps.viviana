@@ -9,17 +9,24 @@ import type { SiteConfig, NavigationItem, Service, PricingPlan } from '../types'
  * Configuración general del sitio web
  * Contiene información básica como nombre, descripción, datos de contacto y redes sociales
  */
-export const SITE_CONFIG: SiteConfig = {
-  name: 'Ps. Viviana Poveda',
-  description: 'Psicóloga clínica, con experiencia en trastornos de ansiedad, depresivos y duelos.',
-  url: 'http://localhost:4321',
-  author: 'Ps.Viviana Poveda',
-  email: 'ps.vivianapoveda@gmail.com',
-  phone: '+56 9 35914385',
-  social: {
-    instagram: 'https://instagram.com/tu-usuario',
-    linkedin: 'https://linkedin.com/in/tu-usuario',
+export const SITE_CONFIG = {
+  name: 'Ps. Viviana Poveda | Psicóloga Clínica en Santiago',
+  description: 'Psicóloga clínica especialista en terapia individual, ansiedad y depresión en Santiago de Chile. Atención presencial y online. Primera sesión gratuita.',
+  url: 'https://psvivianapoveda.cl',
+  author: 'Ps. Viviana Poveda',
+  locale: 'es_CL',
+  type: 'website',
+  keywords: 'psicóloga santiago, terapia psicológica, psicóloga online, terapia individual, ansiedad, depresión, salud mental, atención psicológica chile',
+  themeColor: '#FDF2F8', // Color rosa claro
+  contact: {
+    email: 'contacto@psvivianapoveda.cl',
+    phone: '+56 9 XXXXXXXX', // Reemplazar con número real
+    address: 'Santiago, Chile',
   },
+  social: {
+    instagram: 'https://instagram.com/ps.vivianapoveda',
+    whatsapp: 'https://wa.me/5635914385', // Reemplazar con número real
+  }
 };
 
 /**
@@ -100,4 +107,38 @@ export const PRICING: PricingPlan[] = [
       'Fortalecimiento de la relación',
     ],
   },
-]; 
+];
+
+export const SCHEMA_ORG = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "https://psvivianapoveda.cl/#organization",
+  "name": "Ps. Viviana Poveda - Psicóloga Clínica",
+  "image": "https://psvivianapoveda.cl/images/logo.png",
+  "description": SITE_CONFIG.description,
+  "url": SITE_CONFIG.url,
+  "telephone": SITE_CONFIG.contact.phone,
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Santiago",
+    "addressRegion": "Región Metropolitana",
+    "addressCountry": "CL"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "-33.4489",
+    "longitude": "-70.6693"
+  },
+  "priceRange": "$$",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "19:00"
+    }
+  ],
+  "sameAs": [
+    SITE_CONFIG.social.instagram
+  ]
+}; 

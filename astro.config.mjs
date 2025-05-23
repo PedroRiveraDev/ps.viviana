@@ -6,20 +6,41 @@ import robotsTxt from 'astro-robots-txt';
 
 // https://astro.build/config
 export default defineConfig({
-  site: import.meta.env.SITE_URL || 'https://tudominio.com',
+  site: 'https://psvivianapoveda.cl',
   integrations: [
-    tailwind({
-      applyBaseStyles: false,
+    tailwind(),
+    sitemap({
+      i18n: {
+        defaultLocale: 'es',
+        locales: {
+          es: 'es-CL'
+        }
+      },
+      changefreq: 'weekly',
+      priority: 0.7,
+      lastmod: new Date(),
     }),
-    sitemap(),
     robotsTxt(),
   ],
+  compressHTML: true,
+  build: {
+    inlineStylesheets: 'auto',
+    cssMinify: true,
+    minify: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'aos': ['aos']
+        }
+      }
+    }
+  },
   vite: {
     optimizeDeps: {
       exclude: ['@astrojs/tailwind'],
     },
-  },
-  build: {
-    inlineStylesheets: 'auto',
+    ssr: {
+      noExternal: ['aos']
+    }
   },
 });

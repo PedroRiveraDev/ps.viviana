@@ -1,5 +1,5 @@
 ---
-import { SITE_CONFIG } from '@/utils/constants';
+import { SITE_CONFIG, SCHEMA_ORG } from '@/utils/constants';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
 import WhatsAppButton from '../components/ui/WhatsAppButton.astro';
@@ -10,12 +10,14 @@ interface Props {
   title?: string;
   description?: string;
   image?: string;
+  noindex?: boolean;
 }
 
 const {
   title = SITE_CONFIG.name,
   description = SITE_CONFIG.description,
   image = '/og-image.jpg',
+  noindex = false,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, SITE_CONFIG.url);
@@ -28,18 +30,40 @@ const canonicalURL = new URL(Astro.url.pathname, SITE_CONFIG.url);
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    
+    <!-- SEO básico -->
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="keywords" content={SITE_CONFIG.keywords} />
+    <meta name="author" content={SITE_CONFIG.author} />
+    <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Control de indexación y rastreo -->
+    <meta name="googlebot" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
+    <meta name="bingbot" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
     
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={SITE_CONFIG.type} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={new URL(image, SITE_CONFIG.url)} />
+    <meta property="og:locale" content={SITE_CONFIG.locale} />
+    <meta property="og:site_name" content={SITE_CONFIG.name} />
 
-    <!-- Canonical URL -->
-    <link rel="canonical" href={canonicalURL} />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(image, SITE_CONFIG.url)} />
+
+    <!-- Tema y color -->
+    <meta name="theme-color" content={SITE_CONFIG.themeColor} />
+    <meta name="color-scheme" content="light" />
+
+    <!-- Schema.org para Google -->
+    <script type="application/ld+json" set:html={JSON.stringify(SCHEMA_ORG)} />
 
     <!-- Preload fonts -->
     <link
