@@ -1,39 +1,18 @@
 #!/bin/bash
 
-# 🚀 Script de despliegue para ps.vivianapoveda.cl
+# 🚀 Script de despliegue para ps.viviana
 # Autor: Pedro Rivera
 
 SERVER="root@69.62.89.201"
 DEST_PATH="/opt/psvivianapoveda"
 
 echo "🧹 Deteniendo contenedor y limpiando VPS..."
-ssh $SERVER "
-  cd $DEST_PATH;
-  [ -f docker-compose.yml ] && docker-compose down || echo '⚠️ No se encontró docker-compose.yml';
-  rm -rf *
-"
+ssh $SERVER "cd $DEST_PATH && docker-compose down && rm -rf *"
 
-echo "📤 Subiendo archivos necesarios al VPS..."
-
-# Verifica que rsync esté disponible localmente
-if command -v rsync >/dev/null 2>&1; then
-  rsync -av --progress \
-    --exclude-from=.dockerignore \
-    ./ "$SERVER:$DEST_PATH/"
-else
-  echo "⚠️  rsync no está disponible localmente. Usando scp como alternativa..."
-  scp -r * "$SERVER:$DEST_PATH/"
-fi
+echo "📤 Subiendo archivos al VPS..."
+scp -r * $SERVER:$DEST_PATH
 
 echo "🔄 Reconstruyendo contenedor..."
-ssh $SERVER "
-  cd $DEST_PATH;
-  if [ -f docker-compose.yml ]; then
-    docker-compose up -d --build
-  else
-    echo '❌ No se encontró docker-compose.yml para levantar el contenedor.'
-    exit 1
-  fi
-"
+ssh $SERVER "cd $DEST_PATH && docker-compose up -d --build"
 
-echo "✅ ¡Deploy completado! Verifica en: https://psvivianapoveda.cl"
+echo "✅ ¡Deploy completado! Verifica en: http://69.62.89.201:4321 o tu dominio."
