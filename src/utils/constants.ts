@@ -11,7 +11,7 @@ import type { SiteConfig, NavigationItem, Service, PricingPlan } from '../types'
  */
 export const SITE_CONFIG: SiteConfig = {
   name: 'Ps. Viviana Poveda',
-  description: 'Psicóloga clínica, con experiencia en transtornos de ansiedad, depresivos y duelos.',
+  description: 'Psicóloga clínica, con experiencia en trastornos de ansiedad, depresivos y duelos.',
   url: 'http://localhost:4321',
   author: 'Ps.Viviana Poveda',
   email: 'viviana.poveda7@gmail.com',
