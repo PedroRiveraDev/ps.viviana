@@ -14,8 +14,8 @@ export const SITE_CONFIG: SiteConfig = {
   description: 'Psicóloga clínica, con experiencia en trastornos de ansiedad, depresivos y duelos.',
   url: 'http://localhost:4321',
   author: 'Ps.Viviana Poveda',
-  email: 'viviana.poveda7@gmail.com',
-  phone: '+56 9 85293928',
+  email: 'ps.vivianapoveda@gmail.com',
+  phone: '+56 9 35914385',
   social: {
     instagram: 'https://instagram.com/tu-usuario',
     linkedin: 'https://linkedin.com/in/tu-usuario',
@@ -53,7 +53,7 @@ export const SERVICES: Service[] = [
   },
   {
     id: 'ansiedad',
-    title: 'Ansiedad y Estrés',
+    title: 'Ansiedad y Depresión',
     description: 'Aprende técnicas efectivas para manejar la ansiedad.',
     icon: 'brain',
   },

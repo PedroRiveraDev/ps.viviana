@@ -1,25 +1,39 @@
 #!/bin/bash
 
-# 🚀 Script de despliegue para ps.viviana
+# 🚀 Script de despliegue para ps.vivianapoveda.cl
 # Autor: Pedro Rivera
 
 SERVER="root@69.62.89.201"
 DEST_PATH="/opt/psvivianapoveda"
-BRANCH="main"
-
-echo "🔧 Guardando cambios en Git..."
-git add .
-COMMIT_MSG="deploy: $(date '+%Y-%m-%d %H:%M:%S')"
-git commit -m "$COMMIT_MSG"
-git push origin $BRANCH
 
 echo "🧹 Deteniendo contenedor y limpiando VPS..."
-ssh $SERVER "cd $DEST_PATH && docker-compose down && rm -rf *"
+ssh $SERVER "
+  cd $DEST_PATH;
+  [ -f docker-compose.yml ] && docker-compose down || echo '⚠️ No se encontró docker-compose.yml';
+  rm -rf *
+"
 
-echo "📤 Subiendo archivos al VPS..."
-scp -r * $SERVER:$DEST_PATH
+echo "📤 Subiendo archivos necesarios al VPS..."
+
+# Verifica que rsync esté disponible localmente
+if command -v rsync >/dev/null 2>&1; then
+  rsync -av --progress \
+    --exclude-from=.dockerignore \
+    ./ "$SERVER:$DEST_PATH/"
+else
+  echo "⚠️  rsync no está disponible localmente. Usando scp como alternativa..."
+  scp -r * "$SERVER:$DEST_PATH/"
+fi
 
 echo "🔄 Reconstruyendo contenedor..."
-ssh $SERVER "cd $DEST_PATH && docker-compose up -d --build"
+ssh $SERVER "
+  cd $DEST_PATH;
+  if [ -f docker-compose.yml ]; then
+    docker-compose up -d --build
+  else
+    echo '❌ No se encontró docker-compose.yml para levantar el contenedor.'
+    exit 1
+  fi
+"
 
-echo "✅ ¡Deploy completado! Verifica en: https://psvivianapoveda.cl o IP:4321"
+echo "✅ ¡Deploy completado! Verifica en: https://psvivianapoveda.cl"
