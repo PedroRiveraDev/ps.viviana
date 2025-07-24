@@ -19,8 +19,8 @@ export const SITE_CONFIG = {
   keywords: 'psicóloga santiago, terapia psicológica, psicóloga online, terapia individual, ansiedad, depresión, salud mental, atención psicológica chile',
   themeColor: '#FDF2F8', // Color rosa claro
   contact: {
-    email: 'contacto@psvivianapoveda.cl',
-    phone: '+56 9 XXXXXXXX', // Reemplazar con número real
+    email: 'ps.vivianapoveda@gmail.com',
+    phone: '+56 9 35914385', // Reemplazar con número real
     address: 'Santiago, Chile',
   },
   social: {
