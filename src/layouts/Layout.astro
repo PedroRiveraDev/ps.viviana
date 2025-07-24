@@ -34,14 +34,9 @@ const canonicalURL = new URL(Astro.url.pathname, SITE_CONFIG.url);
     <!-- SEO básico -->
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="keywords" content={SITE_CONFIG.keywords} />
     <meta name="author" content={SITE_CONFIG.author} />
     <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
     <link rel="canonical" href={canonicalURL} />
-
-    <!-- Control de indexación y rastreo -->
-    <meta name="googlebot" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
-    <meta name="bingbot" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content={SITE_CONFIG.type} />
@@ -68,14 +63,14 @@ const canonicalURL = new URL(Astro.url.pathname, SITE_CONFIG.url);
     <!-- Preload fonts -->
     <link
       rel="preload"
-      href="/fonts/Inter/inter.var.woff2"
+      href="/fonts/inter-v19-latin-regular.woff2"
       as="font"
       type="font/woff2"
       crossorigin
     />
     <link
       rel="preload"
-      href="/fonts/Poppins/poppins-regular-webfont.woff2"
+      href="/fonts/cormorant-garamond-v20-latin-regular.woff2"
       as="font"
       type="font/woff2"
       crossorigin
@@ -83,18 +78,6 @@ const canonicalURL = new URL(Astro.url.pathname, SITE_CONFIG.url);
 
     <!-- Precargar recursos críticos -->
     <link rel="preload" href="/videos/hero.mp4" as="video" type="video/mp4" />
-    
-    <!-- Preconectar con orígenes externos -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    <!-- Cargar fuentes con display swap -->
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-    
-    <!-- Fallback para la carga de fuentes -->
-    <noscript>
-      <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    </noscript>
 
     <style>
       /* Estilos para scroll snap */
@@ -240,8 +223,8 @@ const canonicalURL = new URL(Astro.url.pathname, SITE_CONFIG.url);
 <style is:global>
 
   :root {
-    --font-sans: 'Inter var', system-ui, sans-serif;
-    --font-heading: 'Poppins', system-ui, sans-serif;
+    --font-sans: 'Inter', system-ui, sans-serif;
+    --font-heading: 'Cormorant Garamond', serif;
   }
 
   html {
@@ -251,4 +234,4 @@ const canonicalURL = new URL(Astro.url.pathname, SITE_CONFIG.url);
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
   }
-</style> 
+</style>

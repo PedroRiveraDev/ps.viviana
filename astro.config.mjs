@@ -20,7 +20,16 @@ export default defineConfig({
       priority: 0.7,
       lastmod: new Date(),
     }),
-    robotsTxt(),
+    robotsTxt({
+      policy: [
+        { userAgent: '*', allow: '/' },
+        { userAgent: '*', disallow: '/admin' },
+        { userAgent: '*', disallow: '/private' },
+        { userAgent: '*', disallow: '/temp' },
+        { userAgent: '*', disallow: '/api' },
+      ],
+      sitemap: true,
+    }),
   ],
   compressHTML: true,
   build: {
