@@ -12,10 +12,10 @@ const navigation = [
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="fixed w-full bg-white/90 backdrop-blur-sm shadow-md z-50">
-  <nav class="container mx-auto px-4 py-4">
+<header class="fixed w-full bg-white/90 backdrop-blur-md shadow-lg z-50 transition-all duration-300 ease-in-out">
+  <nav class="container mx-auto px-4 py-3">
     <div class="flex items-center justify-between">
-      <a href="/" class="text-2xl font-bold text-primary-700 transform-gpu font-heading">
+      <a href="/" class="text-2xl font-bold text-primary-700 font-heading hover:text-pink-600 transition-colors duration-200">
         Ps. Viviana Poveda
       </a>
 
@@ -24,10 +24,11 @@ const currentPath = Astro.url.pathname;
         {navigation.map((item) => (
           <a
             href={item.href}
-            class={`text-sm font-medium transition-colors duration-200 ${
+            class={`relative text-base font-medium transition-colors duration-200 pb-1
+            ${
               currentPath === item.href
-                ? 'text-pink-700 font-bold underline'
-                : 'text-gray-900 hover:text-pink-600 focus:text-pink-600'
+                ? 'text-pink-700 font-bold after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-pink-700 after:transition-all after:duration-200'
+                : 'text-gray-700 hover:text-pink-600 focus:text-pink-600'
             } font-sans`}
           >
             {item.text}
@@ -36,7 +37,7 @@ const currentPath = Astro.url.pathname;
         
         <a
           href="/#contacto"
-          class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-semibold rounded-md shadow-md text-white bg-pink-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 font-sans"
+          class="inline-flex items-center px-5 py-2.5 border border-transparent text-base font-semibold rounded-full shadow-sm text-white bg-pink-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 transition-all duration-200 font-sans"
         >
           Agenda tu consulta
         </a>
@@ -45,14 +46,14 @@ const currentPath = Astro.url.pathname;
       <!-- Mobile menu button -->
       <button
         type="button"
-        class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500"
+        class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-500 hover:text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-pink-500 transition-colors duration-200"
         aria-controls="mobile-menu"
         aria-expanded="false"
         id="mobile-menu-button"
       >
         <span class="sr-only">Abrir menú</span>
         <svg
-          class="h-6 w-6"
+          class="h-7 w-7 transition-transform duration-300 ease-in-out transform"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
@@ -60,6 +61,7 @@ const currentPath = Astro.url.pathname;
           aria-hidden="true"
         >
           <path
+            class="origin-center transition-all duration-300 ease-in-out"
             stroke-linecap="round"
             stroke-linejoin="round"
             stroke-width="2"
@@ -76,10 +78,10 @@ const currentPath = Astro.url.pathname;
       {navigation.map((item) => (
         <a
           href={item.href}
-          class={`block px-3 py-2 rounded-md text-base font-medium ${
+          class={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
             currentPath === item.href
-              ? 'text-pink-700 font-bold underline bg-pink-50 dark:text-pink-400 dark:bg-gray-800'
-              : 'text-gray-900 hover:text-pink-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-pink-400 dark:hover:bg-gray-800'
+              ? 'text-pink-700 font-bold bg-pink-50'
+              : 'text-gray-700 hover:text-pink-600 hover:bg-gray-50'
           }`}
         >
           {item.text}
@@ -88,7 +90,7 @@ const currentPath = Astro.url.pathname;
       <div class="px-3 py-2">
         <a
           href="/#contacto"
-          class="w-full inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-semibold rounded-md shadow-md text-white bg-pink-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 font-sans"
+          class="w-full inline-flex items-center justify-center px-4 py-2.5 border border-transparent text-base font-semibold rounded-full shadow-sm text-white bg-pink-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 transition-all duration-200 font-sans"
         >
           Agenda tu consulta
         </a>
@@ -106,6 +108,17 @@ const currentPath = Astro.url.pathname;
       const expanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
       mobileMenuButton.setAttribute('aria-expanded', (!expanded).toString());
       mobileMenu.classList.toggle('hidden');
+
+      const path = mobileMenuButton.querySelector('path');
+      if (path) {
+        if (!expanded) {
+          // Change to close icon
+          path.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+        } else {
+          // Change back to hamburger icon
+          path.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+        }
+      }
     });
   }
 
