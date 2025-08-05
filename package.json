@@ -2,6 +2,7 @@
   "name": "psicologa-web",
   "type": "module",
   "version": "0.0.1",
+
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -13,6 +14,9 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "typecheck": "astro check && tsc --noEmit"
+  },
+  "engines": {
+    "node": "18"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.4.1",
